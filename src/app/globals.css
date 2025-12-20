@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.6%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --border: 0 0% 89.8%;
+    --accent: 240 84% 60%;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: 0 0% 3.6%;
+      --foreground: 0 0% 98%;
+      --muted: 0 0% 14.3%;
+      --muted-foreground: 0 0% 63.9%;
+      --border: 0 0% 14.3%;
+      --accent: 240 84% 60%;
+      color-scheme: dark;
+    }
+  }
+
+  html[style*="color-scheme: light"] {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.6%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --border: 0 0% 89.8%;
+    --accent: 240 84% 60%;
+    color-scheme: light;
+  }
+
+  html[style*="color-scheme: dark"] {
+    --background: 0 0% 3.6%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 14.3%;
+    --muted-foreground: 0 0% 63.9%;
+    --border: 0 0% 14.3%;
+    --accent: 240 84% 60%;
+    color-scheme: dark;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated background gradient */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      ellipse 800px 300px at 20% 50%,
+      hsl(240 84% 60% / 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse 600px 400px at 80% 80%,
+      hsl(260 90% 55% / 0.12) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 700px 350px at 40% 20%,
+      hsl(220 80% 65% / 0.1) 0%,
+      transparent 45%
+    );
+  pointer-events: none;
+  animation: gradientShift 12s ease-in-out infinite;
+  z-index: -1;
+  filter: blur(40px);
+}
+
+@keyframes gradientShift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-50px, -50px) scale(1.05);
+  }
+  50% {
+    transform: translate(50px, 50px) scale(1.1);
+  }
+  75% {
+    transform: translate(-30px, 40px) scale(1.02);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Floating elements in background */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle 500px at 15% 30%,
+      hsl(240 85% 62% / 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle 600px at 85% 70%,
+      hsl(270 80% 60% / 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle 400px at 60% 40%,
+      hsl(250 75% 65% / 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  animation: floatBackground 18s ease-in-out infinite;
+  z-index: -1;
+  filter: blur(50px);
+}
+
+@keyframes floatBackground {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-300;
+}
