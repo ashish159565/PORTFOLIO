@@ -9,7 +9,6 @@ import {
   AlertCircle,
   Mail,
   User,
-  Sparkles,
 } from "lucide-react";
 
 export function ContactForm() {

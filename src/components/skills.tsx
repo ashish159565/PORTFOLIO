@@ -219,7 +219,7 @@ export function Skills() {
             { value: "4", label: "Categories", icon: Sparkles },
             { value: "5+", label: "Advanced Areas", icon: TrendingUp },
             { value: "15+", label: "Platforms", icon: Sparkles },
-          ].map((stat, idx) => {
+          ].map((stat) => {
             const Icon = stat.icon;
             return (
               <div

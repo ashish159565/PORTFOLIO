@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Mail,
-  Linkedin,
-  Github,
-  ExternalLink,
-  Sparkles,
-  ArrowRight,
-} from "lucide-react";
+import { Mail, Linkedin, Github, Sparkles, ArrowRight } from "lucide-react";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import { ContactForm } from "./contact-form";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
