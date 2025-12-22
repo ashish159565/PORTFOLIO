@@ -61,7 +61,7 @@ export function About() {
                 microservices using FastAPI, Kubernetes, and AWS, orchestrating
                 AI workers to automate task management across Gmail, Notion, and
                 Slack. I'm passionate about building systems that bridge AI
-                research and real-world impact—from edge-based multimodal
+                research and real-world impact from edge-based multimodal
                 assistants to production MLOps pipelines that scale to 100K+
                 daily evaluations.
               </p>
