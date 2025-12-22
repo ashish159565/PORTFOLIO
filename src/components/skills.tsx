@@ -1,7 +1,7 @@
 "use client";
 
 import * as Accordion from "@radix-ui/react-accordion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Sparkles, TrendingUp } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -92,18 +92,29 @@ export function Skills() {
   ];
 
   const getProficiencyColor = (proficiency: number) => {
-    if (proficiency === 5) return "bg-accent";
-    if (proficiency === 4) return "bg-accent/80";
-    if (proficiency === 3) return "bg-accent/60";
-    return "bg-accent/40";
+    if (proficiency === 5) return "from-accent to-accent/80";
+    if (proficiency === 4) return "from-accent/80 to-accent/60";
+    if (proficiency === 3) return "from-accent/60 to-accent/40";
+    return "from-accent/40 to-accent/20";
+  };
+
+  const getProficiencyLabel = (proficiency: number) => {
+    if (proficiency === 5) return "Expert";
+    if (proficiency === 4) return "Advanced";
+    if (proficiency === 3) return "Intermediate";
+    return "Beginner";
   };
 
   return (
     <section id="skills" className="container mx-auto px-4 py-20 max-w-4xl">
       <div className="space-y-12">
-        <div>
-          <h2 className="text-3xl font-bold mb-2">Skills & Technologies</h2>
-          <p className="text-muted-foreground">
+        {/* Header */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <Sparkles className="text-accent" size={28} />
+            <h2 className="text-3xl font-bold">Skills & Technologies</h2>
+          </div>
+          <p className="text-muted-foreground text-lg">
             Specialized expertise in AI/ML systems, production infrastructure,
             and advanced techniques
           </p>
@@ -119,11 +130,11 @@ export function Skills() {
             <Accordion.Item
               key={index}
               value={String(index)}
-              className="group border border-border rounded-lg overflow-hidden hover:border-accent transition-all duration-300"
+              className="group border border-border rounded-xl overflow-hidden hover:border-accent hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-accent/[0.02] to-transparent"
             >
-              <Accordion.Trigger className="w-full flex items-center gap-4 p-4 hover:bg-muted/50 transition-all duration-300 data-[state=open]:bg-muted/30">
+              <Accordion.Trigger className="w-full flex items-center gap-4 p-6 hover:bg-accent/5 transition-all duration-300 data-[state=open]:bg-accent/5">
                 <div
-                  className={`text-3xl p-2 rounded-lg bg-gradient-to-br ${category.color} bg-opacity-10`}
+                  className={`text-3xl p-3 rounded-lg bg-gradient-to-br ${category.color} bg-opacity-15 group-hover:bg-opacity-25 transition-all duration-300`}
                 >
                   {category.icon}
                 </div>
@@ -137,33 +148,60 @@ export function Skills() {
                 </div>
                 <ChevronDown
                   size={20}
-                  className="text-accent transition-transform duration-300"
+                  className="text-accent transition-transform duration-300 group-hover:scale-125"
                 />
               </Accordion.Trigger>
 
               {/* Expanded Content */}
               <Accordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                <div className="p-6 border border-t-0 border-border rounded-b-lg bg-muted/30 space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-6 border-t border-border/50 bg-gradient-to-b from-accent/5 to-transparent space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="space-y-2 group/skill">
+                      <div
+                        key={skillIndex}
+                        className="group/skill space-y-3 p-4 rounded-lg border border-accent/10 hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
+                        style={{
+                          animation: `slideInLeft 0.3s ease-out ${
+                            skillIndex * 0.05
+                          }s both`,
+                        }}
+                      >
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-foreground group-hover/skill:text-accent transition-colors">
+                          <span className="text-sm font-semibold text-foreground group-hover/skill:text-accent transition-colors">
                             {skill.name}
                           </span>
-                          <span className="text-xs text-muted-foreground">
-                            {skill.proficiency}/5
+                          <span className="text-xs font-medium text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                            {getProficiencyLabel(skill.proficiency)}
                           </span>
                         </div>
-                        <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                          <div
-                            className={`h-full ${getProficiencyColor(
-                              skill.proficiency
-                            )} transition-all duration-500 rounded-full`}
-                            style={{
-                              width: `${(skill.proficiency / 5) * 100}%`,
-                            }}
-                          ></div>
+                        <div className="space-y-2">
+                          <div className="w-full h-2.5 bg-muted rounded-full overflow-hidden border border-accent/20">
+                            <div
+                              className={`h-full bg-gradient-to-r ${getProficiencyColor(
+                                skill.proficiency
+                              )} transition-all duration-700 rounded-full shadow-lg`}
+                              style={{
+                                width: `${(skill.proficiency / 5) * 100}%`,
+                              }}
+                            />
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs text-muted-foreground">
+                              {skill.proficiency}/5
+                            </span>
+                            <div className="flex gap-0.5">
+                              {Array.from({ length: 5 }).map((_, i) => (
+                                <div
+                                  key={i}
+                                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                                    i < skill.proficiency
+                                      ? "bg-accent"
+                                      : "bg-accent/20"
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -176,22 +214,33 @@ export function Skills() {
 
         {/* Summary Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-border">
-          <div className="text-center p-4">
-            <div className="text-3xl font-bold text-accent">48+</div>
-            <div className="text-sm text-muted-foreground">Core Skills</div>
-          </div>
-          <div className="text-center p-4">
-            <div className="text-3xl font-bold text-accent">4</div>
-            <div className="text-sm text-muted-foreground">Categories</div>
-          </div>
-          <div className="text-center p-4">
-            <div className="text-3xl font-bold text-accent">5+</div>
-            <div className="text-sm text-muted-foreground">Advanced Areas</div>
-          </div>
-          <div className="text-center p-4">
-            <div className="text-3xl font-bold text-accent">15+</div>
-            <div className="text-sm text-muted-foreground">Platforms</div>
-          </div>
+          {[
+            { value: "48+", label: "Core Skills", icon: TrendingUp },
+            { value: "4", label: "Categories", icon: Sparkles },
+            { value: "5+", label: "Advanced Areas", icon: TrendingUp },
+            { value: "15+", label: "Platforms", icon: Sparkles },
+          ].map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={stat.label}
+                className="relative p-5 rounded-lg border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent hover:border-accent hover:bg-accent/10 transition-all duration-300 group text-center"
+              >
+                <div className="flex justify-center mb-2">
+                  <Icon
+                    className="text-accent/50 group-hover:text-accent group-hover:scale-125 transition-all duration-300"
+                    size={20}
+                  />
+                </div>
+                <div className="text-2xl md:text-3xl font-bold text-accent group-hover:scale-110 transition-transform duration-300">
+                  {stat.value}
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground font-medium mt-1">
+                  {stat.label}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,6 +1,14 @@
 "use client";
 
-import { Briefcase, ExternalLink } from "lucide-react";
+import {
+  Briefcase,
+  ExternalLink,
+  Calendar,
+  MapPin,
+  ChevronDown,
+  Sparkles,
+} from "lucide-react";
+import { useState } from "react";
 
 interface Experience {
   title: string;
@@ -117,60 +125,133 @@ const experiences: Experience[] = [
 ];
 
 export function Experience() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   return (
     <section id="experience" className="container mx-auto px-4 py-20 max-w-4xl">
       <div className="space-y-8">
-        <h2 className="text-3xl font-bold">Experience</h2>
+        <div className="flex items-center gap-2 mb-8">
+          <Sparkles className="text-accent" size={24} />
+          <h2 className="text-3xl font-bold">Experience</h2>
+        </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 relative">
+          {/* Timeline line */}
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-transparent hidden sm:block" />
+
           {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="border border-border rounded-lg p-6 hover:border-accent hover:shadow-md transition-all duration-300"
-            >
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-accent/10 rounded-lg mt-1">
-                  <Briefcase size={20} className="text-accent" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground">
-                        {exp.title}
-                      </h3>
-                      {exp.website ? (
-                        <a
-                          href={exp.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-accent font-medium hover:underline flex items-center gap-1 w-fit"
-                        >
-                          {exp.company}
-                          <ExternalLink size={16} className="text-accent" />
-                        </a>
-                      ) : (
-                        <p className="text-accent font-medium">{exp.company}</p>
-                      )}
-                    </div>
-                    <div className="text-sm text-muted-foreground text-right">
-                      <p>{exp.period}</p>
-                      <p>{exp.location}</p>
-                    </div>
+            <div key={index} className="group relative sm:pl-8">
+              {/* Timeline dot */}
+              <div className="absolute left-0 top-8 w-4 h-4 rounded-full bg-accent border-4 border-background group-hover:scale-125 transition-transform duration-300 hidden sm:block" />
+
+              <button
+                onClick={() =>
+                  setExpandedIndex(expandedIndex === index ? null : index)
+                }
+                className="w-full text-left p-6 border border-border rounded-xl bg-gradient-to-br from-accent/[0.03] via-transparent to-accent/[0.02] hover:from-accent/[0.08] hover:to-accent/[0.05] hover:border-accent hover:shadow-lg transition-all duration-300 overflow-hidden group"
+              >
+                <div className="flex items-start gap-4">
+                  {/* Icon - visible on mobile */}
+                  <div className="p-3 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 flex-shrink-0 sm:hidden">
+                    <Briefcase size={20} className="text-accent" />
                   </div>
 
-                  <ul className="space-y-2 mt-4">
-                    {exp.highlights.map((highlight, idx) => (
-                      <li
-                        key={idx}
-                        className="flex gap-3 text-muted-foreground"
-                      >
-                        <span className="text-accent font-bold mt-1">•</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex-1 min-w-0">
+                    {/* Title and Company */}
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                      <div className="flex-1">
+                        <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">
+                          {exp.title}
+                        </h3>
+                        {exp.website ? (
+                          <a
+                            href={exp.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent font-semibold hover:underline flex items-center gap-1 w-fit group/link text-sm sm:text-base"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {exp.company}
+                            <ExternalLink
+                              size={14}
+                              className="group-hover/link:translate-x-0.5 transition-transform"
+                            />
+                          </a>
+                        ) : (
+                          <p className="text-accent font-semibold text-sm sm:text-base">
+                            {exp.company}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Meta info - Period and Location */}
+                      <div className="text-xs sm:text-sm text-muted-foreground flex flex-col gap-1.5 sm:text-right flex-shrink-0">
+                        <div className="flex items-center gap-1.5 sm:justify-end">
+                          <Calendar size={14} className="text-accent/70" />
+                          <span className="font-medium">{exp.period}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 sm:justify-end">
+                          <MapPin size={14} className="text-accent/70" />
+                          <span>{exp.location}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Preview - First highlight */}
+                    <div className="flex items-start gap-2 mt-2 p-3 rounded-lg bg-accent/5 group-hover:bg-accent/10 transition-colors">
+                      <span className="text-accent font-bold mt-0.5 flex-shrink-0 text-lg">
+                        ▸
+                      </span>
+                      <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
+                        {exp.highlights[0]}
+                      </p>
+                    </div>
+
+                    {/* Expand indicator */}
+                    {exp.highlights.length > 1 && (
+                      <div className="flex items-center gap-2 mt-3 text-xs text-muted-foreground group-hover:text-accent transition-colors">
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-300 ${
+                            expandedIndex === index ? "rotate-180" : ""
+                          }`}
+                        />
+                        <span className="font-medium">
+                          {expandedIndex === index
+                            ? "Show less"
+                            : `Show ${exp.highlights.length - 1} more`}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </button>
+
+              {/* Expanded content */}
+              {expandedIndex === index && exp.highlights.length > 1 && (
+                <div className="mt-2 mx-6 px-4 py-4 border border-accent/20 rounded-lg bg-gradient-to-b from-accent/[0.05] to-transparent space-y-3 animate-in fade-in slide-in-from-top-2">
+                  <div className="space-y-3">
+                    {exp.highlights.slice(1).map((highlight, idx) => (
+                      <div
+                        key={idx}
+                        className="flex gap-3 group/item"
+                        style={{
+                          animation: `slideInLeft 0.3s ease-out ${
+                            (idx + 1) * 0.05
+                          }s both`,
+                        }}
+                      >
+                        <span className="text-accent font-bold flex-shrink-0 text-lg pt-0.5">
+                          ▸
+                        </span>
+                        <p className="text-sm text-muted-foreground group-hover/item:text-foreground transition-colors leading-relaxed">
+                          {highlight}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

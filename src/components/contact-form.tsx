@@ -2,7 +2,15 @@
 
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import {
+  Send,
+  Loader2,
+  CheckCircle,
+  AlertCircle,
+  Mail,
+  User,
+  Sparkles,
+} from "lucide-react";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -75,10 +83,14 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {/* Name Field */}
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-2">
+      <div className="space-y-2">
+        <label
+          htmlFor="name"
+          className="block text-sm font-semibold text-foreground flex items-center gap-2"
+        >
+          <User size={16} className="text-accent" />
           Name <span className="text-red-500">*</span>
         </label>
         <input
@@ -88,14 +100,18 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           placeholder="Your name"
-          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 hover:border-accent/50"
           required
         />
       </div>
 
       {/* Email Field */}
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">
+      <div className="space-y-2">
+        <label
+          htmlFor="email"
+          className="block text-sm font-semibold text-foreground flex items-center gap-2"
+        >
+          <Mail size={16} className="text-accent" />
           Email <span className="text-red-500">*</span>
         </label>
         <input
@@ -105,15 +121,21 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           placeholder="your.email@example.com"
-          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 hover:border-accent/50"
           required
         />
       </div>
 
       {/* Subject Field (Optional) */}
-      <div>
-        <label htmlFor="subject" className="block text-sm font-medium mb-2">
-          Subject <span className="text-muted-foreground">(optional)</span>
+      <div className="space-y-2">
+        <label
+          htmlFor="subject"
+          className="block text-sm font-semibold text-foreground"
+        >
+          Subject{" "}
+          <span className="text-muted-foreground text-xs font-normal">
+            (optional)
+          </span>
         </label>
         <input
           type="text"
@@ -122,13 +144,16 @@ export function ContactForm() {
           value={formData.subject}
           onChange={handleChange}
           placeholder="What is this about?"
-          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all"
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 hover:border-accent/50"
         />
       </div>
 
       {/* Message Field */}
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
+      <div className="space-y-2">
+        <label
+          htmlFor="message"
+          className="block text-sm font-semibold text-foreground"
+        >
           Message <span className="text-red-500">*</span>
         </label>
         <textarea
@@ -137,24 +162,34 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Your message..."
-          rows={4}
-          className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all resize-none"
+          rows={5}
+          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 resize-none hover:border-accent/50"
           required
         />
       </div>
 
       {/* Status Messages */}
       {status === "success" && (
-        <div className="flex items-center gap-2 text-green-500 bg-green-500/10 p-3 rounded-lg">
-          <CheckCircle size={18} />
-          <span className="text-sm">{message}</span>
+        <div className="flex items-start gap-3 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-500/10 p-4 rounded-lg border border-green-200 dark:border-green-500/20 animate-in fade-in slide-in-from-top-2 duration-300">
+          <CheckCircle size={20} className="flex-shrink-0 mt-0.5" />
+          <div>
+            <h4 className="font-semibold text-sm mb-0.5">
+              Message sent successfully!
+            </h4>
+            <p className="text-sm">{message}</p>
+          </div>
         </div>
       )}
 
       {status === "error" && (
-        <div className="flex items-center gap-2 text-red-500 bg-red-500/10 p-3 rounded-lg">
-          <AlertCircle size={18} />
-          <span className="text-sm">{message}</span>
+        <div className="flex items-start gap-3 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-500/10 p-4 rounded-lg border border-red-200 dark:border-red-500/20 animate-in fade-in slide-in-from-top-2 duration-300">
+          <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
+          <div>
+            <h4 className="font-semibold text-sm mb-0.5">
+              Error sending message
+            </h4>
+            <p className="text-sm">{message}</p>
+          </div>
         </div>
       )}
 
@@ -162,7 +197,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full px-6 py-3 bg-accent text-background font-semibold rounded-lg hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+        className="w-full px-6 py-3.5 bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent text-white font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
       >
         {status === "loading" ? (
           <>
