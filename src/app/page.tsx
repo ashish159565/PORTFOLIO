@@ -95,7 +95,7 @@ export default function Home() {
 
         {/* Top left - Accent blob */}
         <div
-          className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-br from-accent/30 via-accent/15 to-transparent rounded-full blur-3xl"
+          className="absolute -top-40 -left-40 w-40 sm:w-56 md:w-72 lg:w-80 h-40 sm:h-56 md:h-72 lg:h-80 bg-gradient-to-br from-accent/30 via-accent/15 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float1 16s ease-in-out infinite",
             filter: "drop-shadow(0 0 20px rgba(240, 84, 60, 0.1))",
@@ -104,7 +104,7 @@ export default function Home() {
 
         {/* Bottom right - Accent blob */}
         <div
-          className="absolute -bottom-32 -right-32 w-72 h-72 bg-gradient-to-tl from-accent/25 via-accent/12 to-transparent rounded-full blur-3xl"
+          className="absolute -bottom-32 -right-32 w-40 sm:w-52 md:w-64 lg:w-72 h-40 sm:h-52 md:h-64 lg:h-72 bg-gradient-to-tl from-accent/25 via-accent/12 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float2 17s ease-in-out infinite",
             filter: "drop-shadow(0 0 15px rgba(240, 84, 60, 0.08))",
@@ -113,7 +113,7 @@ export default function Home() {
 
         {/* Center-right - Blue blob */}
         <div
-          className="absolute top-1/3 -right-20 w-64 h-64 bg-gradient-to-l from-blue-500/20 via-blue-500/8 to-transparent rounded-full blur-3xl"
+          className="absolute top-1/3 -right-20 w-40 sm:w-48 md:w-56 lg:w-64 h-40 sm:h-48 md:h-56 lg:h-64 bg-gradient-to-l from-blue-500/20 via-blue-500/8 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float3 18s ease-in-out infinite",
             filter: "drop-shadow(0 0 15px rgba(59, 130, 246, 0.08))",
@@ -122,7 +122,7 @@ export default function Home() {
 
         {/* Center - Purple blob */}
         <div
-          className="absolute top-1/2 left-1/3 w-72 h-72 bg-gradient-to-br from-purple-500/12 via-purple-500/6 to-transparent rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/3 w-40 sm:w-52 md:w-64 lg:w-72 h-40 sm:h-52 md:h-64 lg:h-72 bg-gradient-to-br from-purple-500/12 via-purple-500/6 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float4 16s ease-in-out infinite",
             filter: "drop-shadow(0 0 12px rgba(168, 85, 247, 0.06))",
@@ -131,7 +131,7 @@ export default function Home() {
 
         {/* Top right - Indigo blob */}
         <div
-          className="absolute top-20 right-1/4 w-64 h-64 bg-gradient-to-b from-indigo-500/12 via-indigo-500/6 to-transparent rounded-full blur-3xl"
+          className="absolute top-20 right-1/4 w-40 sm:w-48 md:w-56 lg:w-64 h-40 sm:h-48 md:h-56 lg:h-64 bg-gradient-to-b from-indigo-500/12 via-indigo-500/6 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float5 17s ease-in-out infinite",
             filter: "drop-shadow(0 0 12px rgba(99, 102, 241, 0.06))",
@@ -140,7 +140,7 @@ export default function Home() {
 
         {/* Bottom left - Accent blob */}
         <div
-          className="absolute bottom-1/4 left-10 w-56 h-56 bg-gradient-to-tr from-accent/15 via-accent/8 to-transparent rounded-full blur-3xl"
+          className="absolute bottom-1/4 left-10 w-36 sm:w-44 md:w-52 lg:w-56 h-36 sm:h-44 md:h-52 lg:h-56 bg-gradient-to-tr from-accent/15 via-accent/8 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float6 18s ease-in-out infinite",
             filter: "drop-shadow(0 0 12px rgba(240, 84, 60, 0.06))",
@@ -149,7 +149,7 @@ export default function Home() {
 
         {/* Center - Cyan blob */}
         <div
-          className="absolute top-2/3 left-1/2 w-60 h-60 bg-gradient-to-tl from-cyan-500/10 via-cyan-500/5 to-transparent rounded-full blur-3xl"
+          className="absolute top-2/3 left-1/2 w-36 sm:w-44 md:w-52 lg:w-60 h-36 sm:h-44 md:h-52 lg:h-60 bg-gradient-to-tl from-cyan-500/10 via-cyan-500/5 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float7 15s ease-in-out infinite",
             filter: "drop-shadow(0 0 10px rgba(34, 211, 238, 0.05))",
@@ -158,7 +158,7 @@ export default function Home() {
 
         {/* Top center - Pink blob */}
         <div
-          className="absolute top-1/4 left-1/2 w-64 h-64 bg-gradient-to-b from-pink-500/8 via-pink-500/4 to-transparent rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/2 w-40 sm:w-48 md:w-56 lg:w-64 h-40 sm:h-48 md:h-56 lg:h-64 bg-gradient-to-b from-pink-500/8 via-pink-500/4 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float8 17s ease-in-out infinite",
             filter: "drop-shadow(0 0 10px rgba(236, 72, 153, 0.05))",
@@ -167,7 +167,7 @@ export default function Home() {
 
         {/* Right side - Accent accent blob */}
         <div
-          className="absolute top-1/4 right-20 w-56 h-56 bg-gradient-to-l from-accent/20 via-accent/10 to-transparent rounded-full blur-3xl"
+          className="absolute top-1/4 right-20 w-36 sm:w-44 md:w-52 lg:w-56 h-36 sm:h-44 md:h-52 lg:h-56 bg-gradient-to-l from-accent/20 via-accent/10 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float9 15s ease-in-out infinite",
             filter: "drop-shadow(0 0 10px rgba(240, 84, 60, 0.06))",
@@ -176,7 +176,7 @@ export default function Home() {
 
         {/* Left side - Blue blob */}
         <div
-          className="absolute top-1/2 left-1/4 w-48 h-48 bg-gradient-to-r from-blue-500/10 via-blue-500/5 to-transparent rounded-full blur-2xl"
+          className="absolute top-1/2 left-1/4 w-32 sm:w-40 md:w-44 lg:w-48 h-32 sm:h-40 md:h-44 lg:h-48 bg-gradient-to-r from-blue-500/10 via-blue-500/5 to-transparent rounded-full blur-2xl"
           style={{
             animation: "float10 17s ease-in-out infinite",
             filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.05))",
@@ -185,7 +185,7 @@ export default function Home() {
 
         {/* Bottom center - Purple blob */}
         <div
-          className="absolute bottom-1/3 left-1/3 w-52 h-52 bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-transparent rounded-full blur-2xl"
+          className="absolute bottom-1/3 left-1/3 w-32 sm:w-40 md:w-48 lg:w-52 h-32 sm:h-40 md:h-48 lg:h-52 bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-transparent rounded-full blur-2xl"
           style={{
             animation: "float11 16s ease-in-out infinite",
             filter: "drop-shadow(0 0 8px rgba(168, 85, 247, 0.04))",
@@ -194,7 +194,7 @@ export default function Home() {
 
         {/* Top left - Cyan blob */}
         <div
-          className="absolute top-40 left-1/4 w-56 h-56 bg-gradient-to-br from-cyan-500/8 via-cyan-500/4 to-transparent rounded-full blur-2xl"
+          className="absolute top-40 left-1/4 w-36 sm:w-44 md:w-52 lg:w-56 h-36 sm:h-44 md:h-52 lg:h-56 bg-gradient-to-br from-cyan-500/8 via-cyan-500/4 to-transparent rounded-full blur-2xl"
           style={{
             animation: "float12 18s ease-in-out infinite",
             filter: "drop-shadow(0 0 8px rgba(34, 211, 238, 0.04))",
@@ -203,7 +203,7 @@ export default function Home() {
 
         {/* Right center - Pink blob */}
         <div
-          className="absolute top-2/3 right-1/3 w-48 h-48 bg-gradient-to-l from-pink-500/9 via-pink-500/4 to-transparent rounded-full blur-2xl"
+          className="absolute top-2/3 right-1/3 w-32 sm:w-40 md:w-44 lg:w-48 h-32 sm:h-40 md:h-44 lg:h-48 bg-gradient-to-l from-pink-500/9 via-pink-500/4 to-transparent rounded-full blur-2xl"
           style={{
             animation: "float13 17s ease-in-out infinite",
             filter: "drop-shadow(0 0 8px rgba(236, 72, 153, 0.04))",
@@ -212,7 +212,7 @@ export default function Home() {
 
         {/* Center top - Indigo blob */}
         <div
-          className="absolute top-1/3 left-2/3 w-52 h-52 bg-gradient-to-b from-indigo-500/10 via-indigo-500/5 to-transparent rounded-full blur-2xl"
+          className="absolute top-1/3 left-2/3 w-32 sm:w-40 md:w-48 lg:w-52 h-32 sm:h-40 md:h-48 lg:h-52 bg-gradient-to-b from-indigo-500/10 via-indigo-500/5 to-transparent rounded-full blur-2xl"
           style={{
             animation: "float14 15s ease-in-out infinite",
             filter: "drop-shadow(0 0 8px rgba(99, 102, 241, 0.04))",
@@ -221,7 +221,7 @@ export default function Home() {
 
         {/* Bottom right center - Accent blob */}
         <div
-          className="absolute bottom-1/2 right-1/4 w-56 h-56 bg-gradient-to-tl from-accent/12 via-accent/6 to-transparent rounded-full blur-3xl"
+          className="absolute bottom-1/2 right-1/4 w-36 sm:w-44 md:w-52 lg:w-56 h-36 sm:h-44 md:h-52 lg:h-56 bg-gradient-to-tl from-accent/12 via-accent/6 to-transparent rounded-full blur-3xl"
           style={{
             animation: "float15 17s ease-in-out infinite",
             filter: "drop-shadow(0 0 10px rgba(240, 84, 60, 0.05))",
