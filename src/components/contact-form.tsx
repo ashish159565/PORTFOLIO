@@ -42,7 +42,12 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.subject ||
+      !formData.message
+    ) {
       setStatus("error");
       setMessage("Please fill in all required fields");
       return;
@@ -125,16 +130,13 @@ export function ContactForm() {
         />
       </div>
 
-      {/* Subject Field (Optional) */}
+      {/* Subject Field */}
       <div className="space-y-2">
         <label
           htmlFor="subject"
-          className="block text-sm font-semibold text-foreground"
+          className="block text-sm font-semibold text-foreground flex items-center gap-2"
         >
-          Subject{" "}
-          <span className="text-muted-foreground text-xs font-normal">
-            (optional)
-          </span>
+          Subject <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -144,6 +146,7 @@ export function ContactForm() {
           onChange={handleChange}
           placeholder="What is this about?"
           className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 hover:border-accent/50"
+          required
         />
       </div>
 
