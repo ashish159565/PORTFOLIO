@@ -43,7 +43,7 @@ export function Contact() {
         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-5 duration-700">
           <div className="flex items-center gap-3">
             <Sparkles className="text-accent" size={28} />
-            <h2 className="text-3xl font-bold">Get In Touch</h2>
+            <h2 className="text-4xl font-bold">Get In Touch</h2>
           </div>
           <p className="text-muted-foreground max-w-2xl text-lg">
             I'm always interested in collaborating on AI/ML projects, discussing
@@ -119,7 +119,7 @@ export function Contact() {
         {/* Contact Form */}
         <div className="border-2 border-accent/30 rounded-xl p-8 bg-gradient-to-br from-accent/[0.08] via-accent/[0.04] to-transparent mt-12 hover:border-accent/50 transition-all duration-300">
           <div className="space-y-2 mb-6">
-            <h3 className="text-2xl font-bold">Send me a message</h3>
+            <h3 className="text-3xl font-bold">Send me a message</h3>
             <p className="text-sm text-muted-foreground">
               I'll get back to you as soon as possible
             </p>

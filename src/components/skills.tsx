@@ -112,7 +112,7 @@ export function Skills() {
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <Sparkles className="text-accent" size={28} />
-            <h2 className="text-3xl font-bold">Skills & Technologies</h2>
+            <h2 className="text-4xl font-bold">Skills & Technologies</h2>
           </div>
           <p className="text-muted-foreground text-lg">
             Specialized expertise in AI/ML systems, production infrastructure,

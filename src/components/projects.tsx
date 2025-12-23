@@ -58,7 +58,7 @@ export function Projects() {
   return (
     <section id="projects" className="container mx-auto px-4 py-20 max-w-4xl">
       <div className="space-y-8">
-        <h2 className="text-3xl font-bold">Featured Projects</h2>
+        <h2 className="text-4xl font-bold">Featured Projects</h2>
 
         <div className="grid gap-6">
           {projects.map((project, index) => (

@@ -35,7 +35,7 @@ export function About() {
         <div>
           <div className="flex items-center gap-3 mb-6">
             <Sparkles className="text-accent" size={28} />
-            <h2 className="text-3xl font-bold">About Me</h2>
+            <h2 className="text-4xl font-bold">About Me</h2>
           </div>
 
           {/* Bio with better styling */}

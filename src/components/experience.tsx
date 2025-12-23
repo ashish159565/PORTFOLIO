@@ -132,7 +132,7 @@ export function Experience() {
       <div className="space-y-8">
         <div className="flex items-center gap-2 mb-8">
           <Sparkles className="text-accent" size={24} />
-          <h2 className="text-3xl font-bold">Experience</h2>
+          <h2 className="text-4xl font-bold">Experience</h2>
         </div>
 
         <div className="space-y-4 relative">
