@@ -5,7 +5,6 @@ import { Header } from "@/components/header";
 import { ExternalLink, Github, Zap, CheckCircle, X } from "lucide-react";
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import Link from "next/link";
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -148,7 +147,7 @@ export default function ProjectsPage() {
                                   />
                                   <span>{highlight}</span>
                                 </li>
-                              )
+                              ),
                             )}
                           </ul>
                         </div>
